@@ -20,3 +20,4 @@ _______________________________
 * Дебаггинг JavaScript.
 ________________________________
 **Ссылка GitHub:**
+https://renatarakhmanina.github.io/mesto/
