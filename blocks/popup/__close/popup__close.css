@@ -1,0 +1,19 @@
+.popup__close {
+  background: none;
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  top: -40px;
+  right: -10px;
+  padding: 0;
+}
+
+.popup__close:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .popup__close {
+    right: -40px;
+  }
+}

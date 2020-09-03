@@ -1,0 +1,20 @@
+.profile__subline {
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
+  padding-bottom: 36px;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__subline {
+    font-size: 18px;
+    line-height: 22px;
+    text-align: start;
+    padding-bottom: 0;
+  }
+}

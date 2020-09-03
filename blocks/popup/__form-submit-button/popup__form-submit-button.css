@@ -1,0 +1,21 @@
+.popup__form-submit-button {
+  width: 100%;
+  box-shadow: none;
+  border: none;
+  background: #000000;
+  border-radius: 2px;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 48px;
+  padding: 0;
+  height: 50px;
+}
+
+.popup__form-submit-button:hover {
+  cursor: pointer;
+}
