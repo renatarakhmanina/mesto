@@ -7,6 +7,10 @@
   text-align: center;
   color: #FFFFFF;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 250px;
 }
 
 @media screen and (min-width: 768px) {
@@ -19,5 +23,6 @@
 @media screen and (min-width: 1024px) {
   .profile__name {
     font-size: 42px;
+    max-width: 500px;
   }
 }

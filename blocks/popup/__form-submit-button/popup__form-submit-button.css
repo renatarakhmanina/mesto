@@ -1,5 +1,5 @@
 .popup__form-submit-button {
-  width: 100%;
+  width: 250px;
   box-shadow: none;
   border: none;
   background: #000000;
@@ -11,11 +11,22 @@
   line-height: 22px;
   text-align: center;
   color: #FFFFFF;
-  margin-top: 48px;
-  padding: 0;
+  margin: 48px auto 0;
   height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .popup__form-submit-button:hover {
+  opacity: .8;
   cursor: pointer;
+  transition: opacity .2s linear;
+}
+
+@media screen and (min-width: 768px) {
+  .popup__form-submit-button {
+    width: 358px;
+  }
 }

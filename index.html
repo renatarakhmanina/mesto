@@ -8,7 +8,7 @@
 </head>
 <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/Vector.png" alt="Логотип Место">
+      <img class="header__logo" src="./images/logo.svg" alt="Логотип Место">
     </header>
     <main class="content">
       <section class="profile">
@@ -18,51 +18,51 @@
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__subline">Исследователь океана</p>
           </div>
-          <button class="js-profile__edit-button profile__edit-button"></button>
+          <button class="profile__edit-button" type="button"></button>
         </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
       <section class="cards">
         <article class="card">
-          <img class="card__photo" src="./images/alexandr-bormotin-jarD4bOhPYs-unsplash-dunilovo-ivanovo-oblast.jpg" alt="Александр Бормотин, Дунилово, Ивановская область">
+          <img class="card__photo" src="./images/alexandr-bormotin-dunilovo-ivanovo-oblast.jpg" alt="Александр Бормотин, Дунилово, Ивановская область">
           <div class="card__info">
             <h2 class="card__title">Дунилово, Ивановская область</h2>
-            <button class="card__like-button"></button>
+            <button class="card__like-button" type="button"></button>
           </div>
         </article>
         <article class="card">
-          <img class="card__photo" src="./images/artem-maltsev-DYedICXlRzA-unsplash-taraktash-trail-crimea.jpg" alt="Артем Мальцев, Таракташ, Крым">
+          <img class="card__photo" src="./images/artem-maltsev-taraktash-trail-crimea.jpg" alt="Артем Мальцев, Таракташ, Крым">
           <div class="card__info">
             <h2 class="card__title">Таракташ, Крым</h2>
-            <button class="card__like-button"></button>
+            <button class="card__like-button" type="button"></button>
           </div>
         </article>
         <article class="card">
-          <img class="card__photo" src="./images/artem-maltsev-WbT-VE1yCIA-unsplash-karelia-sortavala.jpg" alt="Артем Мальцев, Сортавала, Карелия">
+          <img class="card__photo" src="./images/artem-maltsev-karelia-sortavala.jpg" alt="Артем Мальцев, Сортавала, Карелия">
           <div class="card__info">
             <h2 class="card__title">Сортавала</h2>
-            <button class="card__like-button"></button>
+            <button class="card__like-button" type="button"></button>
           </div>
         </article>
         <article class="card">
-          <img class="card__photo" src="./images/nikolay-vorobyev-bMo6fBHRiYQ-unsplash-sudak-crimea.jpg" alt="Николай Воробьев, Судак, Крым">
+          <img class="card__photo" src="./images/nikolay-vorobyev-sudak-crimea.jpg" alt="Николай Воробьев, Судак, Крым">
           <div class="card__info">
             <h2 class="card__title">Судак, Крым</h2>
-            <button class="card__like-button"></button>
+            <button class="card__like-button" type="button"></button>
           </div>
         </article>
         <article class="card">
-          <img class="card__photo" src="./images/vera-gorbunova-zZAKEZFXPu8-unsplash-tula-konduki.jpg" alt="Вера Горбунова, Кондуки, Тульская область">
+          <img class="card__photo" src="./images/vera-gorbunova-tula-konduki.jpg" alt="Вера Горбунова, Кондуки, Тульская область">
           <div class="card__info">
             <h2 class="card__title">Кондуки</h2>
-            <button class="card__like-button"></button>
+            <button class="card__like-button" type="button"></button>
           </div>
         </article>
         <article class="card">
-          <img class="card__photo" src="./images/vitaly-ustimenko-Hfi20U6ixW0-unsplash-park-monpero-vyborg.jpg" alt="Виталий Устименко, парк Монрепо, Выборг">
+          <img class="card__photo" src="./images/vitaly-ustimenko-park-monrepo-vyborg.jpg" alt="Виталий Устименко, парк Монрепо, Выборг">
           <div class="card__info">
             <h2 class="card__title">Парк Монрепо</h2>
-            <button class="card__like-button"></button>
+            <button class="card__like-button" type="button"></button>
           </div>
         </article>
       </section>
@@ -72,19 +72,15 @@
     </footer>
     <section class="popup">
       <div class="popup__container">
-        <button class="popup__close">
-          <img class="popup__close-image" alt="Закрыть" src="./images/close-icon.png">
-        </button>
-        <div class="popup__content">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form">
+        <button class="popup__close" type="button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form" name="editForm">
             <fieldset class="popup__input-container">
-              <input type="text" value="Жак-Ив Кусто" class="popup__input-item popup__input-item-name">
-              <input type="text" value="Исследователь океана" class="popup__input-item popup__input-item-about">
+              <input type="text" class="popup__input-item popup__input-item_name" name="name">
+              <input type="text" class="popup__input-item popup__input-item_about" name="about">
             </fieldset>
             <button type="submit" class="popup__form-submit-button">Сохранить</button>
           </form>
-        </div>
       </div>
     </section>
   <script src="./scripts/script.js" defer></script>

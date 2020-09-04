@@ -8,6 +8,10 @@
   color: #FFFFFF;
   margin: 0;
   padding-bottom: 36px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 250px;
 }
 
 @media screen and (min-width: 768px) {
@@ -16,5 +20,11 @@
     line-height: 22px;
     text-align: start;
     padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__subline {
+    max-width: 500px;
   }
 }
