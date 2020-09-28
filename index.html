@@ -23,64 +23,52 @@
         <button class="profile__add-button" type="button"></button>
       </section>
       <section class="cards">
-        <article class="card">
-          <img class="card__photo" src="./images/alexandr-bormotin-dunilovo-ivanovo-oblast.jpg" alt="Александр Бормотин, Дунилово, Ивановская область">
-          <div class="card__info">
-            <h2 class="card__title">Дунилово, Ивановская область</h2>
-            <button class="card__like-button" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__photo" src="./images/artem-maltsev-taraktash-trail-crimea.jpg" alt="Артем Мальцев, Таракташ, Крым">
-          <div class="card__info">
-            <h2 class="card__title">Таракташ, Крым</h2>
-            <button class="card__like-button" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__photo" src="./images/artem-maltsev-karelia-sortavala.jpg" alt="Артем Мальцев, Сортавала, Карелия">
-          <div class="card__info">
-            <h2 class="card__title">Сортавала</h2>
-            <button class="card__like-button" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__photo" src="./images/nikolay-vorobyev-sudak-crimea.jpg" alt="Николай Воробьев, Судак, Крым">
-          <div class="card__info">
-            <h2 class="card__title">Судак, Крым</h2>
-            <button class="card__like-button" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__photo" src="./images/vera-gorbunova-tula-konduki.jpg" alt="Вера Горбунова, Кондуки, Тульская область">
-          <div class="card__info">
-            <h2 class="card__title">Кондуки</h2>
-            <button class="card__like-button" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__photo" src="./images/vitaly-ustimenko-park-monrepo-vyborg.jpg" alt="Виталий Устименко, парк Монрепо, Выборг">
-          <div class="card__info">
-            <h2 class="card__title">Парк Монрепо</h2>
-            <button class="card__like-button" type="button"></button>
-          </div>
-        </article>
+        <template class="card-container">
+          <article class="card">
+            <img class="card__photo">
+            <button class="card__delete-button" type="button"></button>
+            <div class="card__info">
+              <h2 class="card__title"></h2>
+              <button class="card__like-button" type="button"></button>
+            </div>
+          </article>
+        </template>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup__edit">
       <div class="popup__container">
-        <button class="popup__close" type="button" aria-label="Закрыть"></button>
+        <button class="popup__close popup__edit-close" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="editForm">
+          <form class="popup__form popup__edit-form" name="editForm">
             <fieldset class="popup__input-container">
               <input type="text" class="popup__input-item popup__input-item_name" name="name">
               <input type="text" class="popup__input-item popup__input-item_about" name="about">
             </fieldset>
-            <button type="submit" class="popup__form-submit-button">Сохранить</button>
+            <button type="submit" class="popup__form-submit-button popup__edit-form-submit-button">Сохранить</button>
           </form>
+      </div>
+    </section>
+    <section class="popup popup__add-item">
+      <div class="popup__container">
+        <button class="popup__close popup__add-item-close" type="button" aria-label="Закрыть"></button>
+        <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form popup__add-form" name="addForm">
+            <fieldset class="popup__input-container">
+              <input type="text" class="popup__input-item popup__input-item_card-name" name="cardName" placeholder="Название">
+              <input type="text" class="popup__input-item popup__input-item_card-link" name="cardLink" placeholder="Ссылка на картинку">
+            </fieldset>
+            <button type="submit" class="popup__form-submit-button popup__add-form-submit-button">Создать</button>
+          </form>
+      </div>
+    </section>
+    <section class="popup popup__image-view">
+      <div class="popup__image-view-container">
+        <img class="popup__image">
+        <button class="popup__close popup__image-view-close" type="button" aria-label="Закрыть"></button>
+        <p class="popup__image-name"></p>
       </div>
     </section>
   <script src="./scripts/script.js" defer></script>

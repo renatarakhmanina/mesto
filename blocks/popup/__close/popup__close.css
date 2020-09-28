@@ -4,23 +4,28 @@
   box-shadow: none;
   background-image: url(../../../images/close-icon.svg);
   background-position: center;
+  background-size: contain;
   width: 45px;
   height: 45px;
   position: absolute;
-  top: -50px;
-  right: 0;
+  top: -35px;
+  right: -35px;
   padding: 0;
+  
 }
 
 .popup__close:hover {
   cursor: pointer;
   opacity: 0.6;
   transition: opacity .2s linear;
+  
 }
 
 @media screen and (min-width: 768px) {
   .popup__close {
+    width: 55px;
+    height: 55px;
     top: -45px;
-    right: -40px;
+    right: -45px;
   }
 }

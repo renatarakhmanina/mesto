@@ -1,5 +1,5 @@
 .popup__form-submit-button {
-  width: 250px;
+  width: 200px;
   box-shadow: none;
   border: none;
   background: #000000;
@@ -7,16 +7,15 @@
   font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 17px;
   text-align: center;
   color: #FFFFFF;
-  margin: 48px auto 0;
-  height: 50px;
+  margin: 36px auto 0;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .popup__form-submit-button:hover {
@@ -28,5 +27,9 @@
 @media screen and (min-width: 768px) {
   .popup__form-submit-button {
     width: 358px;
+    height: 50px;
+    margin-top: 48px;
+    font-size: 18px;
+    line-height: 22px;
   }
 }
