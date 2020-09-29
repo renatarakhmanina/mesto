@@ -1,5 +1,6 @@
 import {initialCards} from './initialcards.js';
 
+const popup = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup__edit');
 const popupEditButton = document.querySelector('.profile__edit-button');
 const popupEditCloseButton = popupEdit.querySelector('.popup__edit-close');
@@ -40,7 +41,7 @@ function renderItem(card) {
   const cardTitle = cardElement.querySelector('.card__title');
   const cardAlt = cardElement.querySelector('.card__photo');
   const cardLikeButton = cardElement.querySelector('.card__like-button');
-  const cardDeleteButton = cardElement.querySelectorAll('.card__delete-button');
+  const cardDeleteButton = cardElement.querySelector('.card__delete-button');
   cardImage.src = card.link;
   cardTitle.textContent = card.name;
   cardAlt.alt = card.name;
@@ -49,18 +50,17 @@ function renderItem(card) {
     handleLikeButton(cardLikeButton)
   });
 
+  cardDeleteButton.addEventListener('click', function (evt) {
+    evt.target.parentElement.remove();
+  });
+  
   cardImage.addEventListener('click', () => { 
     openImageViewPopup(cardImage, cardTitle) 
   });
 
-  cardDeleteButton.forEach((btn) => {
-    btn.addEventListener('click', function () {
-      const cardItem = btn.closest('.card');
-      cardItem.remove();
-    })
+  popupImageViewCloseButton.addEventListener('click', () => {
+    closePopup(popupImageView);
   });
-  
-  popupImageViewCloseButton.addEventListener('click', closeImageViewPopup);
   return cardElement;
 }
 
@@ -74,17 +74,22 @@ const handleLikeButton = (cardLikeButton) => {
   cardLikeButton.classList.toggle('card__like-button_active');
 }
 
-// функция откртия попапа просмотра фотографии //
+// функция открытия попапа //
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
+}
+
+// функция закрытия попапа //
+function closePopup (popup) {
+  popup.classList.remove('popup_opened');
+}
+
+// функция открsтия попапа просмотра фотографии //
 const openImageViewPopup = (cardImage, cardTitle) => {
-  popupImageView.classList.add('popup_opened');
+  openPopup(popupImageView);
   popupImageViewSource.src = cardImage.src;
   popupImageViewName.textContent = cardTitle.textContent;
 }
-
-// функция закрытия попапа просмотра фотографии //
-const closeImageViewPopup = () => {
-  popupImageView.classList.remove('popup_opened');
-};
 
 // функция создания пользователем новой карточки //
 function handleAddFormSubmit (evt) {
@@ -99,29 +104,14 @@ function handleAddFormSubmit (evt) {
   cardLinkInput.value = '';
 
   cards.prepend(renderItem(card));
-  closeAddItemPopup();
+  closePopup(popupAddItem);
 }
 
 // функция открытия формы редактирования//
 const openEditPopup = () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileSubline.textContent;
-  popupEdit.classList.add('popup_opened');
-}
-
-// функция закрытия формы редактирования//
-const closeEditPopup = () => {
-  popupEdit.classList.remove('popup_opened');
-}
-
-// функция открытия формы добавления новой карточки//
-const openAddItemPopup = () => {
-  popupAddItem.classList.add('popup_opened');
-}
-
-// функция закрытия формы добавления новой карточки//
-const closeAddItemPopup = () => {
-  popupAddItem.classList.remove('popup_opened');
+  openPopup(popupEdit);
 }
 
 // функция редактирования данных пользователя //
@@ -131,14 +121,20 @@ function handleEditFormSubmit (evt) {
     profileName.textContent = nameInput.value;
     profileSubline.textContent = jobInput.value;
 
-    closeEditPopup();
+    closePopup(popupEdit);
 }
 
 render();
 
 popupEditButton.addEventListener('click', openEditPopup);
-popupEditCloseButton.addEventListener('click', closeEditPopup);
-popupAddItemButton.addEventListener('click', openAddItemPopup);
-popupAddItemCloseButton.addEventListener('click', closeAddItemPopup);
+popupEditCloseButton.addEventListener('click', () => {
+  closePopup(popupEdit)
+});
+popupAddItemButton.addEventListener('click', () => {
+  openPopup(popupAddItem)
+});
+popupAddItemCloseButton.addEventListener('click', () => {
+  closePopup(popupAddItem)
+});
 formElementEdit.addEventListener('submit', handleEditFormSubmit);
 formElementAdd.addEventListener('submit', handleAddFormSubmit);
