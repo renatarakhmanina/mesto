@@ -1,6 +1,6 @@
 import {initialCards} from './initialcards.js';
 
-const popup = document.querySelectorAll('.popup');
+const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup__edit');
 const popupEditButton = document.querySelector('.profile__edit-button');
 const popupEditCloseButton = popupEdit.querySelector('.popup__edit-close');
@@ -34,7 +34,7 @@ function render () {
   initialCards.forEach(card => addCard(card));
 }
 
-// функция создания новой карточки и добавления слушателей//
+// функция создания новой карточки и добавления слушателей //
 function renderItem(card) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.card__photo');
@@ -77,15 +77,28 @@ const handleLikeButton = (cardLikeButton) => {
 // функция открытия попапа //
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', function (event) {
+    handleClosePopupOnEscape(event, popup);
+  });
 }
 
 // функция закрытия попапа //
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', function (event) {
+    handleClosePopupOnEscape(event, popup);
+  });
 }
 
-// функция открsтия попапа просмотра фотографии //
-const openImageViewPopup = (cardImage, cardTitle) => {
+// функция закрытия попапа клавишей Esc //
+function handleClosePopupOnEscape (event, popup) {
+  if (event.key === 'Escape') {
+    closePopup(popup);
+  };
+}
+
+// функция открытия попапа просмотра фотографии //
+function openImageViewPopup(cardImage, cardTitle) {
   openPopup(popupImageView);
   popupImageViewSource.src = cardImage.src;
   popupImageViewName.textContent = cardTitle.textContent;
@@ -107,7 +120,7 @@ function handleAddFormSubmit (evt) {
   closePopup(popupAddItem);
 }
 
-// функция открытия формы редактирования//
+// функция открытия формы редактирования //
 const openEditPopup = () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileSubline.textContent;
@@ -124,7 +137,9 @@ function handleEditFormSubmit (evt) {
     closePopup(popupEdit);
 }
 
+
 render();
+
 
 popupEditButton.addEventListener('click', openEditPopup);
 popupEditCloseButton.addEventListener('click', () => {
@@ -138,3 +153,8 @@ popupAddItemCloseButton.addEventListener('click', () => {
 });
 formElementEdit.addEventListener('submit', handleEditFormSubmit);
 formElementAdd.addEventListener('submit', handleAddFormSubmit);
+
+// Закрытие модального окна по клику на оверлэй //
+document.addEventListener('click', function (event) {
+  closePopup(event.target)
+});

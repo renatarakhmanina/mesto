@@ -12,6 +12,11 @@
   color: #000000;
 }
 
+.popup__input-item:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
 @media screen and (min-width: 780px) {
   .popup__input-item {
     font-size: 14px;
