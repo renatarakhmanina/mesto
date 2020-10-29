@@ -1,6 +1,5 @@
 import {initialCards} from './initialcards.js';
 
-const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup__edit');
 const popupEditButton = document.querySelector('.profile__edit-button');
 const popupEditCloseButton = popupEdit.querySelector('.popup__edit-close');
@@ -58,9 +57,6 @@ function renderItem(card) {
     openImageViewPopup(cardImage, cardTitle) 
   });
 
-  popupImageViewCloseButton.addEventListener('click', () => {
-    closePopup(popupImageView);
-  });
   return cardElement;
 }
 
@@ -77,25 +73,39 @@ const handleLikeButton = (cardLikeButton) => {
 // функция открытия попапа //
 function openPopup (popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', function (event) {
-    handleClosePopupOnEscape(event, popup);
+  document.addEventListener('keydown', handleClosePopupOnEscape);
+
+  // Исключение возможности создания пустой карточки //
+  const submitButtonList = Array.from(document.querySelectorAll('.popup__form-submit-button'));
+  submitButtonList.forEach((submitButtonElement) => {
+    submitButtonElement.classList.add('popup__form-submit-button_inactive');
+    submitButtonElement.setAttribute("disabled", true);
   });
 }
 
 // функция закрытия попапа //
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', function (event) {
-    handleClosePopupOnEscape(event, popup);
-  });
+  document.removeEventListener('keydown', handleClosePopupOnEscape);
 }
 
-// функция закрытия попапа клавишей Esc //
-function handleClosePopupOnEscape (event, popup) {
+// функция закрытия попапа клавишей Esc // 
+function handleClosePopupOnEscape (event) {
   if (event.key === 'Escape') {
-    closePopup(popup);
-  };
+    const activePopup = document.querySelector('.popup_opened');
+    closePopup(activePopup);
+  }
 }
+
+// Закрытие модального окна по клику на оверлэй // 
+const popupList = Array.from(document.querySelectorAll('.popup'));
+popupList.forEach((popupElement) => {
+  popupElement.addEventListener('click', function (event) {
+    if (event.target === event.currentTarget) {
+      closePopup(event.target);
+    }
+  }); 
+});
 
 // функция открытия попапа просмотра фотографии //
 function openImageViewPopup(cardImage, cardTitle) {
@@ -154,7 +164,11 @@ popupAddItemCloseButton.addEventListener('click', () => {
 formElementEdit.addEventListener('submit', handleEditFormSubmit);
 formElementAdd.addEventListener('submit', handleAddFormSubmit);
 
-// Закрытие модального окна по клику на оверлэй //
-document.addEventListener('click', function (event) {
-  closePopup(event.target)
+popupImageViewCloseButton.addEventListener('click', () => {
+  closePopup(popupImageView);
 });
+
+
+
+
+

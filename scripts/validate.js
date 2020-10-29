@@ -14,7 +14,7 @@ const hideInputError = (params, formElement, inputElement) => {
 };
 
 
-const checkInputValidity = (params, formElement,inputElement) => {
+const checkInputValidity = (params, formElement, inputElement) => {
   const errorMessage = inputElement.validationMessage;
 
   if (!inputElement.validity.valid) {
@@ -39,6 +39,8 @@ const toggleButtonState = (params, inputList, buttonElement) => {
     buttonElement.removeAttribute("disabled");
   }
 };
+
+
 
 const setEventListeners = (params, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(params.inputSelector));
