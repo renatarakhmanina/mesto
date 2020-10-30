@@ -74,13 +74,6 @@ const handleLikeButton = (cardLikeButton) => {
 function openPopup (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleClosePopupOnEscape);
-
-  // Исключение возможности создания пустой карточки //
-  const submitButtonList = Array.from(document.querySelectorAll('.popup__form-submit-button'));
-  submitButtonList.forEach((submitButtonElement) => {
-    submitButtonElement.classList.add('popup__form-submit-button_inactive');
-    submitButtonElement.setAttribute("disabled", true);
-  });
 }
 
 // функция закрытия попапа //
@@ -130,11 +123,25 @@ function handleAddFormSubmit (evt) {
   closePopup(popupAddItem);
 }
 
+// Исключение возможности создания пустой карточки // 
+export function setDisabledButton (buttonElement) {
+  buttonElement.classList.add('popup__form-submit-button_inactive'); 
+  buttonElement.setAttribute("disabled", true); 
+}
+
+function disableSubmitButton () {
+  const submitButtonList = Array.from(document.querySelectorAll('.popup__form-submit-button')); 
+  submitButtonList.forEach((buttonElement) => { 
+    setDisabledButton(buttonElement);
+  }); 
+}
+
 // функция открытия формы редактирования //
 const openEditPopup = () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileSubline.textContent;
   openPopup(popupEdit);
+  disableSubmitButton();
 }
 
 // функция редактирования данных пользователя //
@@ -153,10 +160,11 @@ render();
 
 popupEditButton.addEventListener('click', openEditPopup);
 popupEditCloseButton.addEventListener('click', () => {
-  closePopup(popupEdit)
+  closePopup(popupEdit);
 });
 popupAddItemButton.addEventListener('click', () => {
   openPopup(popupAddItem)
+  disableSubmitButton();
 });
 popupAddItemCloseButton.addEventListener('click', () => {
   closePopup(popupAddItem)
